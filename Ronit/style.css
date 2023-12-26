@@ -5,48 +5,78 @@
 }
 
 body {
-    width: 100vw;
-    min-height: 90vh;
+    width: 99.54vw;
     direction: ltr;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    font-family: 'Rubik', sans-serif;
 }
 
-.navBar, .board, .title {
-    background-image: url(https://www.aleadesign.co.il/files/products/product33404_model0_image0_2022-12-08_17-45-55.jpg);  
+.menu,
+.board,
+.title {
+    background-image: url(https://www.aleadesign.co.il/files/products/product33404_model0_image0_2022-12-08_17-45-55.jpg);
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
     background-attachment: fixed;
+    background-size: cover;
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
     justify-content: space-evenly;
     gap: 5px;
     padding-top: 10px;
+    perspective: 800px;
 }
 
 .title {
-    width: 30vw;
+    display: inline-grid;
+    flex-wrap: wrap;
+    align-content: space-around;
+    align-items: center;
+    justify-items: center;
 }
 
-.navBar {
-    width: 30vw;
+#game-settings select {
+    font-size: 16px;
+    padding: 5px;
 }
 
-.card { 
-    width: 180px;
+.board {
+    max-height: 100vh;
+    min-height: 76.5vh;
+    padding-inline: 10%;
+    padding-top: 30px;
+}
+
+.menu {
+    display: none;
+    width: 100vw;
+    flex-direction: row-reverse;
+}
+
+.startButton {
+    background-color: aquamarine;
+    font-size: 30px;
+}
+
+.card {
+    width: 140px;
     aspect-ratio: 3/4;
-    margin: 10px;
+    margin: 5px;
     align-items: center;
     border: 2px solid rgba(0, 0, 0, 0.4);
     border-radius: 15px;
     background-position: center center;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsLDU8fs9VqPBhapACKFOvGWhYSc4K58eRKA&usqp=CAU);
     cursor: pointer;
-    transition: transform 2s; 
-    perspective: 800px;
     margin: 10px;
     position: relative;
     transform-style: preserve-3d;
-}  
+    transition: all 0.5s ease;
+    ;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 5px 15px;
+}
 
 .front,
 .back {
@@ -56,30 +86,106 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 60px;
+    font-size: 90px;
     border: 2px solid rgba(0, 0, 0, 0.4);
     border-radius: 15px;
-    backface-visibility: hidden;
     position: absolute;
 }
 
 .front {
-    
+
     background-color: whitesmoke;
-    transform: rotateY( 180deg );
 }
 
 .back {
     background-position: center center;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsLDU8fs9VqPBhapACKFOvGWhYSc4K58eRKA&usqp=CAU);
+    backface-visibility: hidden;
 }
 
-.card.flipped .back {
+.toggleCard {
     transform: rotateY(180deg);
+}
+
+.trueStyle {
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+    opacity: 50%;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Rubik', sans-serif;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+button:hover {
+    background-color: rgba(92, 61, 21, 0.922);
+    color: white;
+}
+
+h1 {
+    display: block;
+}
+
+h2 {
+
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    background-color: rgba(223, 209, 193, 0.399);
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
 
 }
 
-.card.flipped .front {
-    transform:  rotateY(0deg);
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    align-items: center;
+    align-self: center;
+    width: fit-content;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
 
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 50px;
+    border: 1px solid #888;
+    width: 80%;
+    font-size: 50px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modal-message {
+    white-space: pre-line;
 }
